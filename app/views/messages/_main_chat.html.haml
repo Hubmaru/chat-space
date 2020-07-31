@@ -1,0 +1,31 @@
+.Main-chat
+
+  .Main-chat__header
+    .Main-chat__header__group
+      .Main-chat__header__group__name
+        rabbit
+      %ul.Main-chat__header__group__member-list
+        Member：
+        %li.Main-chat__header__group__member
+          usagi
+    = link_to "#", class: "Main-chat__header__edit" do
+      Edit
+
+  .Main-chat__message
+    .Main-chat__message__contents
+      .Main-chat__message__contents__list
+        .Main-chat__message__contents__list__name
+          usagi
+        .Main-chat__message__contents__list__date
+          2020年11月11日 15時00分
+      .Main-chat__message__contents__text
+        おはよう
+
+  .Main-chat__form
+    %form
+      .Form-contents
+        %input{type: "text", placeholder: "type a message", class: "Form-contents__message"}
+        %label{class: "Form-contents__image"}
+          = icon('fas', 'image', class: "Form-contents__image--icon")
+          %input{type: "file", class: "Form-contents__image__file"}
+      %input{type: "submit", value: "Send", class: "Send-button"}
