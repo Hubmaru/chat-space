@@ -1,0 +1,18 @@
+.Side-bar
+
+  .Side-bar__user
+    .Side-bar__user__name
+      usagi
+    .Side-bar__user__button
+      = link_to "#", class: "Side-bar__user__button--icon" do
+        = icon('far', 'edit')
+        %span<>
+      = link_to "#", class: "Side-bar__user__button--icon" do
+        = icon('fas', 'cog')
+
+  .Side-bar__group
+    .Side-bar__group__list
+      .Side-bar__group__list--name
+        rabbit
+      .Side-bar__group__list--message
+        おはよう
