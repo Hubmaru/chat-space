@@ -2,12 +2,12 @@
 
   .Side-bar__user
     .Side-bar__user__name
-      usagi
+      = current_user.name
     .Side-bar__user__button
       = link_to "#", class: "Side-bar__user__button--icon" do
         = icon('far', 'edit')
         %span<>
-      = link_to "#", class: "Side-bar__user__button--icon" do
+      = link_to edit_user_path(current_user), class: "Side-bar__user__button--icon" do
         = icon('fas', 'cog')
 
   .Side-bar__group
