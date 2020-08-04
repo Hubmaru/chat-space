@@ -4,15 +4,17 @@
     .Side-bar__user__name
       = current_user.name
     .Side-bar__user__button
-      = link_to "#", class: "Side-bar__user__button--icon" do
+      = link_to new_group_path(current_user), class: "Side-bar__user__button--icon" do
         = icon('far', 'edit')
         %span<>
       = link_to edit_user_path(current_user), class: "Side-bar__user__button--icon" do
         = icon('fas', 'cog')
 
   .Side-bar__group
-    .Side-bar__group__list
-      .Side-bar__group__list--name
-        rabbit
-      .Side-bar__group__list--message
-        おはよう
+    - current_user.groups.each do |group|
+      .Side-bar__group__list
+        = link_to "/", class: "Side-bar__group__list" do
+          .Side-bar__group__list--name
+            = group.name
+          .Side-bar__group__list--message
+            おはよう
