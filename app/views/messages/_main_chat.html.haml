@@ -3,29 +3,23 @@
   .Main-chat__header
     .Main-chat__header__group
       .Main-chat__header__group__name
-        rabbit
+        = @group.name
       %ul.Main-chat__header__group__member-list
         Member：
-        %li.Main-chat__header__group__member
-          usagi
+        - @group.users.each do |user|
+          .Main-chat__header__group__member
+            %li= user.name
     = link_to edit_group_path(current_user), class: "Main-chat__header__edit" do
       Edit
 
   .Main-chat__message
-    .Main-chat__message__contents
-      .Main-chat__message__contents__list
-        .Main-chat__message__contents__list__name
-          usagi
-        .Main-chat__message__contents__list__date
-          2020年11月11日 15時00分
-      .Main-chat__message__contents__text
-        おはよう
+    = render @messages
 
   .Main-chat__form
-    %form
+    = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
       .Form-contents
-        %input{type: "text", placeholder: "type a message", class: "Form-contents__message"}
-        %label{class: "Form-contents__image"}
-          = icon('fas', 'image', class: "Form-contents__image--icon")
-          %input{type: "file", class: "Form-contents__image__file"}
-      %input{type: "submit", value: "Send", class: "Send-button"}
+        = f.text_field :content, placeholder: 'type a message', class: 'Form-contents__message'
+        = f.label :image, class: 'Form-contents__image' do
+          = icon('far', 'image', class: 'Form-contents__image--icon')
+          = f.file_field :image, class: 'Form-contents__image__file'
+      = f.submit 'Send', class: 'Send-button'
