@@ -13,8 +13,8 @@
   .Side-bar__group
     - current_user.groups.each do |group|
       .Side-bar__group__list
-        = link_to "/", class: "Side-bar__group__list" do
+        = link_to group_messages_path(group), class: "Side-bar__group__list" do
           .Side-bar__group__list--name
             = group.name
           .Side-bar__group__list--message
-            おはよう
+            = group.show_last_message
